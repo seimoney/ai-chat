@@ -787,25 +787,119 @@ const Home = () => {
         </>
       ) : (
         <>
-          {preview ? (
-            <main className="relative z-10">
-              <div className="container mx-auto px-6 py-20">
-                <button
-                  className="absolute left-4 top-8"
-                  onClick={sharePreview}
-                >
-                  Share <Share />
-                </button>
-                <iframe className="w-full h-full" src={preview}></iframe>
-              </div>
-            </main>
-          ) : (
-            <main className="relative z-10">
-              <div className="container mx-auto px-6 py-20">
-                <p>No preview</p>
-              </div>
-            </main>
-          )}
+          <>
+            <>
+              <>
+                {preview ? (
+                  <main className="relative z-10 bg-gray-50 min-h-[calc(100vh - 80px)]">
+                    <div className="container px-4 py-8 pr-[240px]">
+                      {/* Browser-style header */}
+                      <div className="bg-gray-100 rounded-t-lg border-b border-gray-300 px-4 py-3 flex items-center justify-between">
+                        {/* Browser controls */}
+                        <div className="flex space-x-2">
+                          <div className="w-3 h-3 rounded-full bg-red-400 cursor-pointer hover:bg-red-500"></div>
+                          <div className="w-3 h-3 rounded-full bg-yellow-400 cursor-pointer hover:bg-yellow-500"></div>
+                          <div className="w-3 h-3 rounded-full bg-green-400 cursor-pointer hover:bg-green-500"></div>
+                        </div>
+
+                        {/* URL bar */}
+                        <div className="flex-1 mx-4 bg-white rounded-md px-3 py-1.5 text-sm text-gray-500 truncate">
+                          {preview}
+                        </div>
+
+                        {/* Action buttons */}
+                        <div className="flex space-x-2">
+                          <button
+                            className="flex items-center space-x-1 bg-blue-500 hover:bg-blue-600 text-white px-3 py-1.5 rounded-md text-sm transition-colors duration-200"
+                            onClick={sharePreview}
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-4 w-4"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
+                              />
+                            </svg>
+                            <span>Share</span>
+                          </button>
+
+                          <button className="p-1.5 text-gray-500 hover:text-gray-700 hover:bg-gray-200 rounded-md transition-colors duration-200">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-4 w-4"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M19 9l-7 7-7-7"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Preview frame */}
+                      <div className="bg-white border border-gray-300 border-t-0 rounded-b-lg shadow-sm overflow-hidden">
+                        <iframe
+                          className="w-full h-[70vh]"
+                          src={preview}
+                          title="Website preview"
+                          sandbox="allow-same-origin allow-scripts allow-forms"
+                          loading="lazy"
+                        ></iframe>
+                      </div>
+
+                      {/* Preview info */}
+                      <div className="mt-4 bg-white rounded-lg p-4 shadow-sm">
+                        <h3 className="font-medium text-gray-700 mb-2">
+                          Preview Information
+                        </h3>
+                        <p className="text-sm text-gray-600 truncate">
+                          <span className="font-medium">URL:</span> {preview}
+                        </p>
+                      </div>
+                    </div>
+                  </main>
+                ) : (
+                  <main className="relative z-10 bg-gray-50 min-h-[calc(100vh - 80px)] flex items-center justify-center">
+                    <div className="container mx-auto px-4 py-20 text-center">
+                      <div className="max-w-md mx-auto">
+                        <div className="w-16 h-16 mx-auto mb-4 text-gray-300">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                          </svg>
+                        </div>
+                        <h3 className="text-xl font-medium text-gray-500 mb-2">
+                          No Preview Available
+                        </h3>
+                      </div>
+                    </div>
+                  </main>
+                )}
+              </>
+            </>
+          </>
         </>
       )}
     </div>
