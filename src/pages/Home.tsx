@@ -15,7 +15,6 @@ import {
   CreditCard,
   Shield,
   Rocket,
-  Share,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -26,7 +25,6 @@ import { toast } from "sonner";
 import { createAppKit } from "@reown/appkit";
 import { wagmiAdapter, metadata } from "@/wallet-config";
 import { seiTestnet } from "@reown/appkit/networks";
-import { useSearchParams } from "react-router-dom";
 
 const suggestedMessages = [
   "I want to create a payment link",
@@ -54,9 +52,8 @@ const features = [
 
 const Home = () => {
   const { address } = useAccount();
-  const [params] = useSearchParams();
 
-  const [input, setInput] = useState(params.get("message") ?? "");
+  const [input, setInput] = useState("");
   const [payload, setPayload] = useState({});
   const [showConversation, setShowConversation] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
