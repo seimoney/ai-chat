@@ -26,6 +26,8 @@ import { createAppKit } from "@reown/appkit";
 import { wagmiAdapter, metadata } from "@/wallet-config";
 import { seiTestnet } from "@reown/appkit/networks";
 
+const threadSubject = Date.now();
+
 const suggestedMessages = [
   "I want to create a payment link",
   "How do I set up content gating?",
@@ -126,7 +128,7 @@ const Home = () => {
       setShowConversation(true);
 
       await sendMessage({
-        threadId: address,
+        threadId: `${address}-${threadSubject}`,
         input,
         payload: JSON.stringify(payload),
         file: selectedFile,
