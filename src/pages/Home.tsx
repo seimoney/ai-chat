@@ -67,7 +67,6 @@ const Home = () => {
   const { address } = useAccount();
 
   const [input, setInput] = useState("");
-  const [payload, setPayload] = useState({});
   const [showConversation, setShowConversation] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -79,13 +78,6 @@ const Home = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const { messages, sendMessage, isThinking, preview } = useAgent();
-
-  useEffect(() => {
-    setPayload({
-      address,
-      message: `This is the wallet address of the connected user ${address}`,
-    });
-  }, [address]);
 
   const sharePreview = async () => {
     try {
@@ -130,7 +122,13 @@ const Home = () => {
       await sendMessage({
         threadId: `${address}-${threadSubject}`,
         input,
-        payload: JSON.stringify(payload),
+        payload: JSON.stringify({
+          message: `This is the wallet address of the connected user ${address}`,
+          note: `
+        Don't reply me with an html form.
+        Try to extract the required parameters from my input ${input}, dont me eager to asked me required parameters to create links.
+        `,
+        }),
         file: selectedFile,
       });
 
