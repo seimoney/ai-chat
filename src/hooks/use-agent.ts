@@ -43,10 +43,19 @@ export async function messageAgent(
 function extractFirstLink(text: string): string | undefined {
   const urlRegex =
     /(https?:\/\/[^\s<>"]+|www\.[^\s<>"]+|[a-zA-Z0-9][a-zA-Z0-9-]*\.[a-zA-Z]{2,}(\/[^\s<>"]*)?)/gi;
+
   const match = text.match(urlRegex);
   if (!match) return undefined;
-  let url = match[0];
-  if (url.startsWith("www.")) url = "https://" + url;
+
+  // If any of the links contain "seimoney.link", prioritize it
+  const seiLink = match.find((u) => u.includes("seimoney.link"));
+  let url = seiLink || match[0];
+
+  // Normalize "www."
+  if (url.startsWith("www.")) {
+    url = "https://" + url;
+  }
+
   return url;
 }
 
