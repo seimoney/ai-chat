@@ -50,6 +50,17 @@ const features = [
   },
 ];
 
+const modal = createAppKit({
+  adapters: [wagmiAdapter],
+  projectId: import.meta.env.VITE_REOWN_PROJECT_ID!,
+  networks: [seiTestnet],
+  defaultNetwork: seiTestnet,
+  metadata: metadata,
+  features: {
+    analytics: true,
+  },
+});
+
 const Home = () => {
   const { address } = useAccount();
 
@@ -66,17 +77,6 @@ const Home = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const { messages, sendMessage, isThinking, preview } = useAgent();
-
-  const modal = createAppKit({
-    adapters: [wagmiAdapter],
-    projectId: import.meta.env.VITE_REOWN_PROJECT_ID!,
-    networks: [seiTestnet],
-    defaultNetwork: seiTestnet,
-    metadata: metadata,
-    features: {
-      analytics: true,
-    },
-  });
 
   useEffect(() => {
     setPayload({
