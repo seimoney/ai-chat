@@ -47,14 +47,13 @@ function extractFirstLink(text: string): string | undefined {
   const match = text.match(urlRegex);
   if (!match) return undefined;
 
-  // If any of the links contain "seimoney.link", prioritize it
   const seiLink = match.find((u) => u.includes("seimoney.link"));
   let url = seiLink || match[0];
-
-  // Normalize "www."
   if (url.startsWith("www.")) {
     url = "https://" + url;
   }
+
+  if (!url.toLowerCase().includes("seimoney.link")) return undefined;
 
   return url;
 }
