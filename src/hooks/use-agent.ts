@@ -54,7 +54,6 @@ function extractFirstLink(text: string): string | undefined {
   }
 
   if (!url.toLowerCase().includes("seimoney.link")) return undefined;
-
   return url;
 }
 
