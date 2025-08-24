@@ -1,10 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+* {
+  font-family: "Space Grotesk", sans-serif;
+}
 
 @layer base {
   :root {
@@ -39,17 +41,39 @@ All colors MUST be HSL.
     --radius: 0.75rem;
 
     /* Beautiful gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(270 91% 65%), hsl(280 85% 70%));
-    --gradient-secondary: linear-gradient(135deg, hsl(220 70% 95%), hsl(270 20% 96%));
-    --gradient-accent: linear-gradient(135deg, hsl(280 85% 70%), hsl(290 85% 75%));
-    --gradient-hero: linear-gradient(135deg, hsl(270 91% 65%) 0%, hsl(280 85% 70%) 50%, hsl(290 85% 75%) 100%);
-    --gradient-arc: linear-gradient(180deg, hsl(270 91% 65% / 0.1) 0%, hsl(280 85% 70% / 0.2) 50%, hsl(290 85% 75% / 0.1) 100%);
-    
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(270 91% 65%),
+      hsl(280 85% 70%)
+    );
+    --gradient-secondary: linear-gradient(
+      135deg,
+      hsl(220 70% 95%),
+      hsl(270 20% 96%)
+    );
+    --gradient-accent: linear-gradient(
+      135deg,
+      hsl(280 85% 70%),
+      hsl(290 85% 75%)
+    );
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(270 91% 65%) 0%,
+      hsl(280 85% 70%) 50%,
+      hsl(290 85% 75%) 100%
+    );
+    --gradient-arc: linear-gradient(
+      180deg,
+      hsl(270 91% 65% / 0.1) 0%,
+      hsl(280 85% 70% / 0.2) 50%,
+      hsl(290 85% 75% / 0.1) 100%
+    );
+
     /* Shadows with color */
     --shadow-primary: 0 10px 40px -10px hsl(270 91% 65% / 0.3);
     --shadow-accent: 0 8px 32px -8px hsl(280 85% 70% / 0.25);
     --shadow-glow: 0 0 60px hsl(270 91% 65% / 0.15);
-    
+
     /* Animation timing */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -101,12 +125,34 @@ All colors MUST be HSL.
     --ring: 262 83% 65%;
 
     /* Dark mode gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(270 91% 70%), hsl(280 85% 75%));
-    --gradient-secondary: linear-gradient(135deg, hsl(260 15% 12%), hsl(260 10% 15%));
-    --gradient-accent: linear-gradient(135deg, hsl(280 85% 75%), hsl(290 85% 80%));
-    --gradient-hero: linear-gradient(135deg, hsl(270 91% 70%) 0%, hsl(280 85% 75%) 50%, hsl(290 85% 80%) 100%);
-    --gradient-arc: linear-gradient(180deg, hsl(270 91% 70% / 0.15) 0%, hsl(280 85% 75% / 0.25) 50%, hsl(290 85% 80% / 0.15) 100%);
-    
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(270 91% 70%),
+      hsl(280 85% 75%)
+    );
+    --gradient-secondary: linear-gradient(
+      135deg,
+      hsl(260 15% 12%),
+      hsl(260 10% 15%)
+    );
+    --gradient-accent: linear-gradient(
+      135deg,
+      hsl(280 85% 75%),
+      hsl(290 85% 80%)
+    );
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(270 91% 70%) 0%,
+      hsl(280 85% 75%) 50%,
+      hsl(290 85% 80%) 100%
+    );
+    --gradient-arc: linear-gradient(
+      180deg,
+      hsl(270 91% 70% / 0.15) 0%,
+      hsl(280 85% 75% / 0.25) 50%,
+      hsl(290 85% 80% / 0.15) 100%
+    );
+
     /* Dark shadows */
     --shadow-primary: 0 10px 40px -10px hsl(270 91% 70% / 0.4);
     --shadow-accent: 0 8px 32px -8px hsl(280 85% 75% / 0.3);
@@ -134,5 +180,121 @@ All colors MUST be HSL.
 
   html {
     scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .rich-text {
+    @apply leading-relaxed space-y-4;
+  }
+
+  /* Headings */
+  .rich-text h1,
+  .rich-text h2,
+  .rich-text h3,
+  .rich-text h4,
+  .rich-text h5,
+  .rich-text h6 {
+    @apply font-bold tracking-tight;
+  }
+
+  .rich-text h1 {
+    @apply text-lg mt-2 mb-1;
+  }
+  .rich-text h2 {
+    @apply text-lg mt-2 mb-1;
+  }
+  .rich-text h3 {
+    @apply text-lg mt-2 mb-1;
+  }
+  .rich-text h4 {
+    @apply text-lg mt-2 mb-1;
+  }
+  .rich-text h5 {
+    @apply text-lg mt-2 mb-1;
+  }
+  .rich-text h6 {
+    @apply text-sm text-muted-foreground mt-2 mb-1;
+  }
+
+  /* Paragraphs & links */
+  .rich-text p {
+    @apply text-base;
+  }
+  .rich-text a {
+    @apply text-primary underline underline-offset-2 font-medium;
+  }
+  .rich-text a:hover {
+    @apply opacity-80;
+  }
+
+  /* Lists */
+  .rich-text ul {
+    @apply list-disc pl-6 space-y-1;
+  }
+  .rich-text ol {
+    @apply list-decimal pl-6 space-y-1;
+  }
+
+  /* Blockquote */
+  .rich-text blockquote {
+    @apply border-l-4 border-border pl-4 italic text-muted-foreground bg-secondary/40 rounded-lg py-2;
+  }
+
+  /* Code */
+  .rich-text code {
+    @apply font-mono text-sm px-1.5 py-0.5 rounded-md bg-muted text-primary;
+  }
+  .rich-text pre {
+    @apply bg-muted p-4 rounded-lg overflow-x-auto text-sm font-mono text-foreground border border-border shadow-inner;
+  }
+  .rich-text pre code {
+    @apply bg-transparent p-0 text-inherit;
+  }
+
+  /* Tables */
+  .rich-text table {
+    @apply w-full text-sm border border-border rounded-lg overflow-hidden;
+    border-collapse: collapse;
+  }
+  .rich-text th {
+    @apply bg-secondary text-left px-4 py-2 font-semibold;
+  }
+  .rich-text td {
+    @apply border-t border-border px-4 py-2;
+  }
+  .rich-text tr:hover td {
+    @apply bg-secondary/40;
+  }
+
+  /* Buttons */
+  .rich-text .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-semibold shadow-sm transition-colors;
+  }
+  .rich-text .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+  .rich-text .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+  .rich-text .btn-accent {
+    @apply bg-accent text-accent-foreground hover:bg-accent/90;
+  }
+  .rich-text .btn-destructive {
+    @apply bg-destructive text-destructive-foreground hover:bg-destructive/90;
+  }
+
+  /* Misc */
+  .rich-text hr {
+    @apply border-border my-6;
+  }
+  .rich-text img {
+    @apply rounded-lg shadow-md max-w-full;
+  }
+  .rich-text mark {
+    @apply bg-accent text-accent-foreground rounded px-1;
+  }
+  .rich-text strong {
+    @apply font-semibold;
   }
 }
